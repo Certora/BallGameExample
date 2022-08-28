@@ -1,7 +1,7 @@
 #!/bin/sh
 
-certoraRun contracts/KeepAway.sol \
-    --verify KeepAway:certora/specs/KeepAway.spec \
+certoraRun contracts/BallGame.sol \
+    --verify BallGame:certora/specs/BallGame.spec \
     --solc solc8.0
     --msg  "KeepAway verification"
 

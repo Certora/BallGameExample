@@ -1,7 +1,8 @@
 pragma solidity ^0.8.0;
 
 /**
- * Contract that keeps track of an integer indicating which player holds a ball.
+ * Contract that models a game of keep away.  The contract keeps track of an
+ * integer indicating which player holds a ball.
  *
  * When a user calls {pass}, the players will pass the ball to another player if
  * they have it:
@@ -9,9 +10,10 @@ pragma solidity ^0.8.0;
  *   - player 3 will pass back to player 1
  *   - any other player will pass to player 2
  *
- * Player 1 starts with the ball; the game is lost if player 2 ever gets the ball.
+ * Player 1 starts with the ball; the game is lost if player 2 ever gets the
+ * ball.
  */
-contract KeepAway {
+contract BallGame {
 
     /// The current position of the ball
     uint8 public ballPosition;
@@ -21,7 +23,10 @@ contract KeepAway {
         ballPosition = 1;
     }
     
-    /// Move the ball to the next player, based on who is currently holding it
+    /// Move the ball to the next player, based on who is currently holding it:
+    ///   - player 1 will pass to player 3
+    ///   - player 3 will pass to player 1
+    ///   - everyone else will pass to player 2
     function pass() external {
         if (ballPosition == 1)
             ballPosition = 3;
